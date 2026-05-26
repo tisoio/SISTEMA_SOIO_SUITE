@@ -1,0 +1,3 @@
+# Copie para config/app.properties em cada aplicacao
+app.nome=MeuSistema
+app.versao=1.0.0

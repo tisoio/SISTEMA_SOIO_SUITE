@@ -1,0 +1,82 @@
+SOIO SUITE
+==========
+
+Repositorio de sistemas Java da SOIO (monorepo Maven).
+
+GitHub: https://github.com/tisoio/SISTEMA_SOIO_SUITE
+Pasta local: C:\GITHUB\SISTEMA_SOIO_SUITE
+
+
+O QUE E ESTE PROJETO
+--------------------
+Central para criar e manter varios sistemas desktop em Java,
+com codigo compartilhado (core) e um app de exemplo para copiar.
+
+
+ESTRUTURA
+---------
+SISTEMA_SOIO_SUITE\
+  LEIA-ME.txt              <- este arquivo
+  README.md                <- documentacao completa (GitHub)
+  pom.xml                  <- build Maven (pai)
+  modules\soio-suite-core\ <- biblioteca comum
+  apps\exemplo-desktop\    <- modelo de aplicacao
+  config\templates\        <- modelos de configuracao
+  scripts\build.ps1        <- compilar tudo
+
+
+REQUISITOS
+----------
+- JDK 17 ou superior
+- Maven 3.9 ou superior
+
+
+COMPILAR
+--------
+Abra o PowerShell nesta pasta e execute:
+
+  .\scripts\build.ps1
+
+Ou:
+
+  mvn clean package
+
+
+TESTAR O EXEMPLO
+----------------
+Apos compilar:
+
+  java -jar apps\exemplo-desktop\target\exemplo-desktop-1.0.0-SNAPSHOT.jar
+
+
+CRIAR UM NOVO SISTEMA
+---------------------
+1. Copie a pasta apps\exemplo-desktop para apps\NomeDoSistema
+2. Renomeie pacotes Java (com.soio.suite.exemplo -> com.soio.nomedosistema)
+3. Edite o pom.xml do novo app (artifactId, name)
+4. Adicione em pom.xml (raiz), dentro de <modules>:
+
+     <module>apps/NomeDoSistema</module>
+
+5. Rode .\scripts\build.ps1 novamente
+
+
+GIT (ENVIAR ALTERACOES)
+-----------------------
+  git status
+  git add .
+  git commit -m "descricao da alteracao"
+  git push
+
+
+CONVENCOES SOIO
+---------------
+- groupId Maven: com.soio
+- Pacotes Java: com.soio.<nome-do-sistema>
+- Nao versionar senhas (smtp, banco, etc.) no Git
+- Executaveis .exe: gerar em dist\ ou pasta de deploy, fora do Git
+
+
+DUVIDAS
+-------
+Consulte tambem README.md nesta mesma pasta.

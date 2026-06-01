@@ -44,3 +44,15 @@ Desktop.ini
 
 # Logs
 *.log
+
+# Node.js — apps/loja-online
+**/node_modules/
+**/.next/
+apps/loja-online/apps/web/.env.local
+apps/loja-online/apps/api/.env
+.env
+.env.local
+.env.*.local
+npm-debug.log*
+apps/loja-online/**/dist/
+apps/loja-online/**/uploads/

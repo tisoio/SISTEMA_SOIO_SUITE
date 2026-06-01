@@ -1,6 +1,6 @@
 # SOIO Suite
 
-Monorepo Java para sistemas desktop e ferramentas internas da **SOIO**.
+Monorepo da **SOIO**: sistemas Java (desktop), **loja online** (Node.js) e ferramentas internas.
 
 Repositorio: https://github.com/tisoio/SISTEMA_SOIO_SUITE
 
@@ -10,31 +10,46 @@ Repositorio: https://github.com/tisoio/SISTEMA_SOIO_SUITE
 SISTEMA_SOIO_SUITE/
 ├── LEIA-ME.txt             # Guia rapido (portugues)
 ├── pom.xml                 # POM pai (Maven multi-modulo)
-├── modules/                # Bibliotecas compartilhadas
-│   └── soio-suite-core/    # Utilitarios comuns
-├── apps/                   # Aplicacoes (um modulo Maven por sistema)
-│   └── exemplo-desktop/    # Modelo pronto para copiar
+├── modules/                # Bibliotecas compartilhadas Java
+│   └── soio-suite-core/
+├── apps/
+│   ├── exemplo-desktop/    # Modelo Java desktop
+│   └── loja-online/        # Loja https://loja.soio.com.br (Next.js + API)
 ├── config/templates/       # Modelos de configuracao
 └── scripts/                # Build e empacotamento
 ```
 
 ## Requisitos
 
+**Java (desktop):**
+
 - JDK 17+
 - Maven 3.9+
 
+**Loja online (`apps/loja-online`):**
+
+- Node.js 20+
+- npm 10+
+
 ## Primeiros passos
+
+**Java (Suite):**
 
 ```powershell
 cd C:\GITHUB\SISTEMA_SOIO_SUITE
 .\scripts\build.ps1
 ```
 
-Ou:
+Ou: `mvn clean package`
+
+**Loja online:**
 
 ```powershell
-mvn clean package
+cd C:\GITHUB\SISTEMA_SOIO_SUITE
+.\scripts\dev-loja.ps1
 ```
+
+Ou em `apps\loja-online`: `npm install` e `npm run dev:all` — ver [apps/loja-online/README.md](apps/loja-online/README.md).
 
 ## Criar um novo sistema (app)
 

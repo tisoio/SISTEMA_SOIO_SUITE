@@ -10,11 +10,12 @@
     <packaging>pom</packaging>
 
     <name>SOIO Suite</name>
-    <description>Monorepo de sistemas Java SOIO (bibliotecas compartilhadas e aplicacoes desktop)</description>
+    <description>Monorepo SOIO: sistemas Java, loja online (Node.js) e ferramentas internas</description>
 
     <modules>
         <module>modules/soio-suite-core</module>
         <module>apps/exemplo-desktop</module>
+        <module>apps/loja-online</module>
     </modules>
 
     <properties>

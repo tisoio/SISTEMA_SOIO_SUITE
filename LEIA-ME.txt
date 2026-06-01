@@ -20,15 +20,22 @@ SISTEMA_SOIO_SUITE\
   README.md                <- documentacao completa (GitHub)
   pom.xml                  <- build Maven (pai)
   modules\soio-suite-core\ <- biblioteca comum
-  apps\exemplo-desktop\    <- modelo de aplicacao
+  apps\exemplo-desktop\    <- modelo de aplicacao Java
+  apps\loja-online\        <- loja web loja.soio.com.br (Node.js)
   config\templates\        <- modelos de configuracao
-  scripts\build.ps1        <- compilar tudo
+  scripts\build.ps1        <- compilar Java
+  scripts\dev-loja.ps1     <- loja + API em desenvolvimento
 
 
 REQUISITOS
 ----------
+Java:
 - JDK 17 ou superior
 - Maven 3.9 ou superior
+
+Loja online (apps\loja-online):
+- Node.js 20+
+- npm 10+
 
 
 COMPILAR
@@ -47,6 +54,16 @@ TESTAR O EXEMPLO
 Apos compilar:
 
   java -jar apps\exemplo-desktop\target\exemplo-desktop-1.0.0-SNAPSHOT.jar
+
+
+LOJA ONLINE
+-----------
+  .\scripts\dev-loja.ps1
+
+  Site: http://localhost:3000
+  API:  http://localhost:4000
+
+  Documentacao: apps\loja-online\ESCOPO-MVP-SITE-SOIO.md
 
 
 CRIAR UM NOVO SISTEMA

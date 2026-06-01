@@ -1,0 +1,22 @@
+{
+  "name": "soio-loja",
+  "private": true,
+  "description": "Loja online SOIO — loja.soio.com.br",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @soio/web",
+    "dev:api": "npm run dev -w @soio/api",
+    "dev:all": "concurrently \"npm run dev -w @soio/web\" \"npm run dev -w @soio/api\"",
+    "build": "npm run build -w @soio/shared && npm run build -w @soio/api && npm run build -w @soio/web",
+    "lint": "npm run lint -ws --if-present"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

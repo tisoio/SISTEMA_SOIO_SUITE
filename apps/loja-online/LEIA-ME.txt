@@ -1,0 +1,37 @@
+SOIO LOJA ONLINE
+================
+
+App web: https://loja.soio.com.br
+Monorepo Node dentro do SOIO Suite (apps/loja-online).
+
+REQUISITOS
+----------
+- Node.js 20+
+- npm 10+
+- (Producao) Docker para Postgres/Redis — ver infra/docker/
+
+DESENVOLVIMENTO
+---------------
+Na pasta apps\loja-online:
+
+  npm install
+  npm run dev          rem loja http://localhost:3000
+  npm run dev:api      rem API  http://localhost:4000
+  npm run dev:all      rem ambos
+
+DOCUMENTACAO
+------------
+- README.md              — visao geral
+- ESCOPO-MVP-SITE-SOIO.md
+- ANOTACAO-SITE-VENDAS-CRACHAS.md
+- ESTRUTURA-PROJETO.md
+
+MAVEN
+-----
+Este modulo usa packaging pom (sem Java). O build Maven do Suite ignora npm;
+use os scripts npm acima ou scripts\dev-loja.ps1 na raiz do Suite.
+
+CONFIG
+------
+Copie config\templates\loja-online.env.example para apps\loja-online\apps\api\.env
+(nao versionar senhas).

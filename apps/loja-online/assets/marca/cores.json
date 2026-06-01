@@ -1,0 +1,21 @@
+{
+  "fonte": "Alinhado ao site institucional (novo-site-soio) e pasta MARCA/soio",
+  "primarias": {
+    "blue-950": "#071a3d",
+    "blue-900": "#0a2a66",
+    "blue-700": "#1048a8",
+    "blue-600": "#1764d8",
+    "blue-100": "#eaf2ff",
+    "blue-50": "#f5f9ff"
+  },
+  "neutras": {
+    "text": "#172033",
+    "muted": "#65728a",
+    "line": "#dce6f4",
+    "white": "#ffffff"
+  },
+  "tipografia": {
+    "corpo": "Helvetica Neue, Helvetica, Arial, sans-serif",
+    "destaque": "Leigo, Helvetica Neue, Arial, sans-serif"
+  }
+}

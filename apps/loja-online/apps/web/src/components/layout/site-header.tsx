@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/layout/brand-logo";
 
 const nav = [
   { href: "/produtos/cracha", label: "Crachás" },
@@ -9,17 +10,15 @@ const nav = [
 
 export function SiteHeader() {
   return (
-    <header className="border-b border-zinc-200 bg-white">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4">
-        <Link href="/" className="text-xl font-bold tracking-tight text-[#003366]">
-          SOIO
-        </Link>
-        <nav className="hidden items-center gap-6 text-sm font-medium text-zinc-700 md:flex">
+    <header className="sticky top-0 z-20 border-b border-soio-line/80 bg-white/92 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 md:min-h-[82px] md:py-4">
+        <BrandLogo variant="header" />
+        <nav className="hidden items-center gap-6 text-sm font-bold text-soio-muted md:flex">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="transition-colors hover:text-[#003366]"
+              className="transition-colors hover:text-soio-primary"
             >
               {item.label}
             </Link>
@@ -28,13 +27,13 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <Link
             href="/conta"
-            className="text-sm text-zinc-600 hover:text-[#003366]"
+            className="hidden text-sm text-soio-muted hover:text-soio-primary sm:inline"
           >
             Minha conta
           </Link>
           <Link
             href="/carrinho"
-            className="rounded-full bg-[#003366] px-4 py-2 text-sm font-medium text-white hover:bg-[#002244]"
+            className="rounded-full bg-soio-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-soio-primary-hover"
           >
             Carrinho
           </Link>

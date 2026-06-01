@@ -28,15 +28,15 @@ export default async function ProductPage({
 
   return (
     <main className="mx-auto max-w-6xl flex-1 px-4 py-12">
-      <p className="text-sm text-zinc-500">
-        <Link href="/" className="hover:text-[#003366]">
+      <p className="text-sm text-soio-muted">
+        <Link href="/" className="hover:text-soio-primary">
           Início
         </Link>{" "}
         / Produtos
       </p>
-      <h1 className="mt-4 text-3xl font-bold text-[#003366]">{product.title}</h1>
-      <p className="mt-4 text-zinc-600">{product.description}</p>
-      <div className="mt-8 rounded-lg border border-dashed border-zinc-300 bg-zinc-50 p-8 text-center text-sm text-zinc-500">
+      <h1 className="mt-4 text-3xl font-bold text-soio-primary">{product.title}</h1>
+      <p className="mt-4 text-soio-muted">{product.description}</p>
+      <div className="mt-8 rounded-lg border border-dashed border-soio-line bg-soio-surface p-8 text-center text-sm text-soio-muted">
         Configurador de produto — Semana 2 do MVP
       </div>
     </main>

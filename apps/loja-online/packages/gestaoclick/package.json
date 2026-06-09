@@ -1,5 +1,5 @@
 {
-  "name": "@soio/shared",
+  "name": "@soio/gestaoclick",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -7,7 +7,6 @@
   "types": "./src/index.ts",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch",
     "lint": "tsc --noEmit"
   },
   "devDependencies": {

@@ -2,6 +2,7 @@ import "dotenv/config";
 import Fastify from "fastify";
 import cors from "@fastify/cors";
 import { SITE_CHANNEL_NAME } from "@soio/shared";
+import { isSafe2PayConfigured, loadSafe2PayConfig } from "./config/safe2pay.js";
 
 const port = Number(process.env.PORT ?? 4000);
 const host = process.env.HOST ?? "0.0.0.0";
@@ -16,11 +17,19 @@ async function buildApp() {
     ],
   });
 
-  app.get("/health", async () => ({
-    status: "ok",
-    channel: SITE_CHANNEL_NAME,
-    timestamp: new Date().toISOString(),
-  }));
+  app.get("/health", async () => {
+    const safe2pay = loadSafe2PayConfig();
+    return {
+      status: "ok",
+      channel: SITE_CHANNEL_NAME,
+      timestamp: new Date().toISOString(),
+      payments: {
+        provider: "safe2pay",
+        configured: isSafe2PayConfigured(),
+        sandbox: safe2pay?.sandbox ?? null,
+      },
+    };
+  });
 
   app.get("/api/v1", async () => ({
     name: "SOIO Loja API",

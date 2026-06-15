@@ -39,8 +39,8 @@ Lançar o canal **Site SOIO** (subdomínio de [www.soio.com.br](https://www.soio
 |------|---------|
 | Modelo | Híbrido B2B + B2C |
 | Fluxo de pedido | Misto: pagamento direto **ou** aprovação/orçamento conforme regra |
-| Pagamento MVP | **Pix + cartão**; gateway **a contratar** |
-| Antifraude | **Sim no MVP** (3DS quando aplicável ao gateway) |
+| Pagamento MVP | **Pix + cartão** via **Safe2Pay** (credenciais disponíveis) |
+| Antifraude | **Sim no MVP** (3DS / antifraude Safe2Pay quando aplicável) |
 | Faixas de preço | **1, 10, 20, 50, 100, 200, 500** unidades |
 | Pedido mínimo | **Não** |
 | Frete | **Peso/volume**; retirada + entrega |
@@ -170,13 +170,13 @@ Cada produto no admin deve ter: SKU interno, mapeamento `produto_id` / `variacao
 
 | Item | MVP |
 |------|-----|
-| Gateway | **A contratar** (sugestão: avaliar Mercado Pago, Pagar.me ou PagSeguro — Pix + cartão + antifraude) |
-| Pix | QR Code / copia e cola; confirmação via webhook |
-| Cartão | Crédito; 3DS conforme gateway |
+| Gateway | **Safe2Pay** — [documentação](https://developers.safe2pay.com.br/) · ver [`docs/integracoes/safe2pay-pagamento.md`](./docs/integracoes/safe2pay-pagamento.md) |
+| Pix | PaymentMethod `6`; QR/copia e cola |
+| Cartão | PaymentMethod `2`; tokenização / 3DS conforme Safe2Pay |
 | Estorno | Processo manual conforme política de trocas |
 | NF | Emitida no GestãoClick (pós-pedido) |
 
-**Dependência crítica:** contratação e credenciais do gateway na **Semana 1**.
+**Dependência:** credenciais Safe2Pay (Key + Token) configuradas em `apps/api/.env` — **disponibilizadas pela SOIO**.
 
 ---
 
@@ -350,7 +350,7 @@ Cada produto no admin deve ter: SKU interno, mapeamento `produto_id` / `variacao
 
 | Risco | Mitigação |
 |-------|-----------|
-| Gateway não contratado na Semana 1 | Prioridade máxima; fallback pagamento manual só em homolog |
+| Gateway não configurado no `.env` | Preencher `SAFE2PAY_API_KEY` e testar sandbox |
 | Frete complexo | MVP: tabela própria por região se API atrasar |
 | Prévia visual complexa | MVP: prévia 2D simplificada; evoluir depois |
 | Integração ERP | Reutilizar código Mercos; fila + retry |
@@ -379,7 +379,7 @@ Cada produto no admin deve ter: SKU interno, mapeamento `produto_id` / `variacao
 
 | # | Item | Responsável |
 |---|------|-------------|
-| 1 | Escolher e contratar **gateway** (Pix + cartão + antifraude) | SOIO |
+| 1 | ~~Gateway~~ **Safe2Pay** — configurar Key + Token em `apps/api/.env` | SOIO / TI |
 | 2 | ~~Subdomínio~~ **loja.soio.com.br** — configurar DNS/SSL | SOIO / TI |
 | 3 | Tabela de **preços** por produto nas 7 faixas | Comercial |
 | 4 | Tabela de **prazos** por produto/quantidade | Produção |
@@ -409,3 +409,4 @@ Cada produto no admin deve ter: SKU interno, mapeamento `produto_id` / `variacao
 | Data | Versão | Descrição |
 |------|--------|-----------|
 | 2026-06-01 | 1.0 | Escopo MVP consolidado a partir do briefing |
+| 2026-06-09 | 1.1 | Gateway Safe2Pay definido; Token + Key; doc integração |

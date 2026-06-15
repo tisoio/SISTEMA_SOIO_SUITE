@@ -3,6 +3,16 @@ export const SITE_CHANNEL_NAME = "Site SOIO" as const;
 
 export const SITE_URL = "https://loja.soio.com.br" as const;
 
+/** Gateway de pagamento */
+export const PAYMENT_PROVIDER = "safe2pay" as const;
+
+/** Safe2Pay — códigos PaymentMethod (API) */
+export const SAFE2PAY_PAYMENT_METHOD = {
+  boleto: "1",
+  creditCard: "2",
+  pix: "6",
+} as const;
+
 /** Faixas de quantidade para precificação */
 export const PRICE_QUANTITY_TIERS = [1, 10, 20, 50, 100, 200, 500] as const;
 
